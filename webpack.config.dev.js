@@ -6,12 +6,12 @@ module.exports = merge(commonConfig, {
   mode: 'development',
   devServer: {
     port: 3000,
-    hot: true,
+    hot: false,
     open: true,
   },
   plugins: [
     new ESLintPlugin({
-      extensions: ['js'],
+      extensions: ['ts'],
       fix: true,
       failOnError: false,
     }),
