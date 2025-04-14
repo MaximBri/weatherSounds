@@ -1,4 +1,11 @@
-const weatherList = [
+export interface weatherItemInterface {
+  id: number;
+  imagePath: string;
+  iconPath: string;
+  audioPath: string;
+}
+
+const weatherList: weatherItemInterface[] = [
   {
     id: 1,
     imagePath: 'summer-bg.jpg',
