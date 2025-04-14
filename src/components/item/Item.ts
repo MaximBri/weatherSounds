@@ -1,3 +1,11 @@
+import { weatherItemInterface } from 'src/data/weatherList';
+
+export interface ItemInterface
+  extends weatherItemInterface {
+  activeSoundId: number;
+  changeActiveSound: (id: number) => void;
+}
+
 export const Item = ({
   iconPath,
   imagePath,
@@ -5,15 +13,15 @@ export const Item = ({
   activeSoundId,
   id,
   changeActiveSound,
-}) => {
-  const isActive = () => activeSoundId === id;
+}: ItemInterface) => {
+  const isActive = (): boolean => activeSoundId === id;
 
-  const audioPause = () => {
+  const audioPause = (): void => {
     audio.pause();
     icon.src = 'assets/icons/pause.svg';
   };
 
-  const audioPlay = () => {
+  const audioPlay = ():void => {
     audio.play();
     icon.src = `assets/icons/${iconPath}`;
   };
@@ -35,12 +43,12 @@ export const Item = ({
 
   const volumeControl = document.createElement('input');
   volumeControl.type = 'range';
-  volumeControl.value = 50;
-  volumeControl.min = 0;
-  volumeControl.max = 100;
+  volumeControl.value = "50";
+  volumeControl.min = "0";
+  volumeControl.max = "100";
 
   volumeControl.addEventListener('input', () => {
-    audio.volume = volumeControl.value / 100;
+    audio.volume = +volumeControl.value / 100;
   });
 
   if (isActive()) {
